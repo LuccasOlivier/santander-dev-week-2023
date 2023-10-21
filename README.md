@@ -2,56 +2,37 @@
 
 Java RESTful API criada para a Santander Dev Week.
 
-## Principais Tecnologias
- - **Java 17**: Utilizaremos a versão LTS mais recente do Java para tirar vantagem das últimas inovações que essa linguagem robusta e amplamente utilizada oferece;
- - **Spring Boot 3**: Trabalharemos com a mais nova versão do Spring Boot, que maximiza a produtividade do desenvolvedor por meio de sua poderosa premissa de autoconfiguração;
- - **Spring Data JPA**: Exploraremos como essa ferramenta pode simplificar nossa camada de acesso aos dados, facilitando a integração com bancos de dados SQL;
- - **OpenAPI (Swagger)**: Vamos criar uma documentação de API eficaz e fácil de entender usando a OpenAPI (Swagger), perfeitamente alinhada com a alta produtividade que o Spring Boot oferece;
- - **Railway**: facilita o deploy e monitoramento de nossas soluções na nuvem, além de oferecer diversos bancos de dados como serviço e pipelines de CI/CD.
+## Implementações Realizadas por mim:
 
-## [Link do Figma](https://www.figma.com/file/0ZsjwjsYlYd3timxqMWlbj/SANTANDER---Projeto-Web%2FMobile?type=design&node-id=1421%3A432&mode=design&t=6dPQuerScEQH0zAn-1)
+Como participante ativo do curso Fullstack Java + Angular do Santander Dev Week 2023, tive o prazer de contribuir com várias implementações valiosas para este projeto. Abaixo, descrevo as principais alterações que introduzi:
 
-O Figma foi utilizado para a abstração do domínio desta API, sendo útil na análise e projeto da solução.
+### Criação do Endpoint para Alteração de Senha
 
-## Diagrama de Classes (Domínio da API)
+Adicionei um novo endpoint chamado /users/change-password para possibilitar que os usuários atualizem suas senhas. Essa funcionalidade é essencial para melhorar a segurança e a usabilidade de nossa aplicação.
 
-```mermaid
-classDiagram
-  class User {
-    -String name
-    -Account account
-    -Feature[] features
-    -Card card
-    -News[] news
-  }
+### Criação de uma Classe ChangePasswordRequest
 
-  class Account {
-    -String number
-    -String agency
-    -Number balance
-    -Number limit
-  }
+Desenvolvi uma nova classe denominada ChangePasswordRequest, projetada para representar os dados necessários para efetuar uma alteração de senha. Esses dados incluem o ID do usuário, a senha atual e a nova senha.
 
-  class Feature {
-    -String icon
-    -String description
-  }
+### Atualização do UserController
 
-  class Card {
-    -String number
-    -Number limit
-  }
+Aprimorei o UserController ao adicionar um novo método responsável por lidar com as solicitações de alteração de senha. Esse método aceita um objeto ChangePasswordRequest como entrada e efetua o processamento necessário para a alteração de senha.
 
-  class News {
-    -String icon
-    -String description
-  }
+### Atualização do UserService
 
-  User "1" *-- "1" Account
-  User "1" *-- "N" Feature
-  User "1" *-- "1" Card
-  User "1" *-- "N" News
-```
+Estendi o UserService ao incluir um novo método que executa a lógica relacionada à alteração de senha, com base nas informações fornecidas no objeto ChangePasswordRequest.
+
+### Atualização do UserServiceImpl
+
+Na classe UserServiceImpl, implementei a lógica de alteração de senha. Agora, o serviço verifica a senha atual do usuário, executa a atualização e lida com qualquer possível falha na alteração de senha.
+
+### Mensagens Adicionadas
+
+Inseri mensagens em inglês para notificar os usuários sobre o resultado das alterações de senha:
+- "Password changed successfully!" (Senha alterada com sucesso!)
+- "Password change failed. Please check the current password." (Falha na alteração de senha. Verifique a senha atual.)
+
+Continuarei implementando mais recursos e melhorias no projeto! 
 
 ## IMPORTANTE
 
